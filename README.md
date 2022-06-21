@@ -9,8 +9,25 @@ composer require studiow/http-exceptions
 ```
 
 ## Throwing exceptions
-The package provides dedicated Exceptions for each of the 4xx and 5xx error status codes:
+The package provides dedicated Exceptions for each of the 4xx and 5xx error status codes. 
+You throw them like you would throw any other exception:
+``` php
+if (! file_exists($my_file)){
+  throw new \Studiow\Http\Exceptions\ClientError\NotFoundException();
+}
+```
 
+## Outputting to Json
+All of the exceptions have a toJsonResponse method. This method expects a PSR-7 ResponseInterface object and will return
+a a PSR-7 ResponseInterface object with the appropriate headers, status code and reason phrase set.
+``` php
+$exception = new \Studiow\Http\Exceptions\ClientError\NotFoundException();
+
+/* convert the exception to a ResponseInterfaceObject */
+$response = $exception->toJsonResponse(new \GuzzleHttp\Psr7\Response());
+```
+
+## Exception overview
 ### Client Error (4xx)
 | Status Code | Reason Phrase                   | Class name                                                                |
 |-------------|---------------------------------|---------------------------------------------------------------------------|
