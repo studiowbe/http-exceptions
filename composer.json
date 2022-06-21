@@ -1,7 +1,8 @@
 {
   "name": "studiow/http-exceptions",
   "description": "HTTP exceptions",
-  "type": "project",
+  "type": "library",
+  "license": "MIT",
   "authors": [
     {
       "name": "Willem Wollebrants",
