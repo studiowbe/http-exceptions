@@ -43,7 +43,7 @@ abstract class HttpException extends Exception implements HttpExceptionInterface
         return $response->withStatus($this->getCode(), $this->getMessage());
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize():array
     {
         return [
             'status'=>$this->getCode(),
